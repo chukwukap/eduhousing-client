@@ -1,6 +1,9 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
-import "./App.css";
+// import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./components/pages/Home";
+import AppLayout from "./components/layout";
+import PropertyPage from "./components/pages/property";
 
 function App() {
   return (
@@ -10,6 +13,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
         </Route>
+        <Route path="properties" element={<PropertyPage />} />
       </Routes>
     </BrowserRouter>
   );
