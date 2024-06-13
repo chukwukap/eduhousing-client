@@ -1,9 +1,6 @@
-// import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Home from "./components/pages/Home";
-import AppLayout from "./components/layout";
-import PropertyPage from "./components/pages/property";
+import { useState } from "react";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
   return (

@@ -8,9 +8,9 @@ const SearchComponent = () => {
   const [lodgeType, setLodgeType] = useState("");
   const [pricingRange, setPricingRange] = useState([0, 10000000]);
   const [propertySize, setPropertySize] = useState([0, 1000]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
+  //   const [isLoading, setIsLoading] = useState(false);
+  //   const [error, setError] = useState(null);
+  //   const [searchResults, setSearchResults] = useState([]);
 
   const universityLocations = [
     { value: "university-of-lagos", label: "University of Lagos" },
@@ -26,25 +26,25 @@ const SearchComponent = () => {
     // Add more lodge types here
   ];
 
-  const handleSearch = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
+  //   const handleSearch = async () => {
+  //     try {
+  //     //   setIsLoading(true);
+  //     //   setError(null);
 
-      const response = await axios.post("/api/search", {
-        university,
-        lodgeType,
-        pricingRange,
-        propertySize,
-      });
+  //       const response = await axios.post("/api/search", {
+  //         university,
+  //         lodgeType,
+  //         pricingRange,
+  //         propertySize,
+  //       });
 
-      setSearchResults(response.data);
-    } catch (error) {
-      setError("An error occurred while searching. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //       setSearchResults(response.data);
+  //     } catch (error) {
+  //       setError("An error occurred while searching. Please try again.");
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
 
   return (
     <section className="h-[50vh]">
@@ -106,7 +106,7 @@ const SearchComponent = () => {
           </div>
         </div>
         <div className="search-button">
-          <button onClick={handleSearch}>Search Properties</button>
+          {/* <button onClick={handleSearch}>Search Properties</button> */}
         </div>
       </div>
     </section>
