@@ -1,15 +1,19 @@
+"use client";
+
 import { useState } from "react";
 import Select from "react-select";
-// import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import axios from "axios";
+
+type UniversityLocation = {
+  value: string;
+  label: string;
+};
 
 const SearchComponent = () => {
   const [university, setUniversity] = useState("");
   const [lodgeType, setLodgeType] = useState("");
   //   const [pricingRange, setPricingRange] = useState([0, 100000]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState([]);
 
   const universityLocations = [
@@ -30,13 +34,16 @@ const SearchComponent = () => {
       setIsLoading(true);
       setError(null);
 
-      const response = await axios.post("/api/v1/search", {
-        university,
-        lodgeType,
-        // pricingRange,
+      const response = await fetch("/api/v1/search", {
+        body: JSON.stringify({
+          university,
+          lodgeType,
+          // pricingRange,
+        }),
       });
+      const data = await response.json();
 
-      setSearchResults(response.data);
+      setSearchResults(data);
     } catch (error) {
       setError("An error occurred while searching. Please try again.");
     } finally {
@@ -56,7 +63,7 @@ const SearchComponent = () => {
               value={universityLocations.find(
                 (option) => option.value === university
               )}
-              onChange={(option) => setUniversity(option.value)}
+              onChange={(option) => setUniversity(option?.value || "")}
               placeholder="Select University"
             />
           </div>
@@ -66,7 +73,7 @@ const SearchComponent = () => {
               id="lodge-type"
               options={lodgeTypes}
               value={lodgeTypes.find((option) => option.value === lodgeType)}
-              onChange={(option) => setLodgeType(option.value)}
+              onChange={(option) => setLodgeType(option?.value || "")}
               placeholder="Select Lodge Type"
             />
           </div>
