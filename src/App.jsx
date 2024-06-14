@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import AppLayout from "./components/ui/AppLayout";
 import ErrorPage from "./components/pages/ErrorPage";
+import PropertyPage from "./components/pages/property";
 
 function App() {
 	return (
