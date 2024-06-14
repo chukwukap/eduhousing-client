@@ -5,13 +5,13 @@
   "tsx": false,
   "tailwind": {
     "config": ".",
-    "css": "app/globals.css",
+    "css": "index.css",
     "baseColor": "slate",
     "cssVariables": false,
     "prefix": ""
   },
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
+    "components": ".",
+    "utils": "."
   }
 }

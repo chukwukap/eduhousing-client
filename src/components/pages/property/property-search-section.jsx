@@ -1,16 +1,17 @@
 import { useState } from "react";
 import Select from "react-select";
-import Slider from "rc-slider";
+// import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import axios from "axios";
+import { Button } from "antd";
 
 const SearchComponent = () => {
   const [university, setUniversity] = useState("");
   const [lodgeType, setLodgeType] = useState("");
-  const [pricingRange, setPricingRange] = useState([0, 10000000]);
-  const [propertySize, setPropertySize] = useState([0, 1000]);
-  //   const [isLoading, setIsLoading] = useState(false);
-  //   const [error, setError] = useState(null);
-  //   const [searchResults, setSearchResults] = useState([]);
+  //   const [pricingRange, setPricingRange] = useState([0, 100000]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   const universityLocations = [
     { value: "university-of-lagos", label: "University of Lagos" },
@@ -25,34 +26,29 @@ const SearchComponent = () => {
     { value: "self-contain", label: "Self Contain" },
     // Add more lodge types here
   ];
+  const handleSearch = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
 
-  //   const handleSearch = async () => {
-  //     try {
-  //     //   setIsLoading(true);
-  //     //   setError(null);
+      const response = await axios.post("/api/v1/search", {
+        university,
+        lodgeType,
+        // pricingRange,
+      });
 
-  //       const response = await axios.post("/api/search", {
-  //         university,
-  //         lodgeType,
-  //         pricingRange,
-  //         propertySize,
-  //       });
-
-  //       setSearchResults(response.data);
-  //     } catch (error) {
-  //       setError("An error occurred while searching. Please try again.");
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+      setSearchResults(response.data);
+    } catch (error) {
+      setError("An error occurred while searching. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <section className="h-[50vh]">
+    <section className="h-[30vh] border">
       <div className="container mt-5">
-        <div className="search-header">
-          <h2>Find Your Perfect Accommodation</h2>
-        </div>
-        <div className="flex gap-5 text-sm">
+        <div className="flex gap-5 justify-between text-sm mb-10">
           <div className="filter-group">
             <label htmlFor="university-location">University</label>
             <Select
@@ -62,7 +58,7 @@ const SearchComponent = () => {
                 (option) => option.value === university
               )}
               onChange={(option) => setUniversity(option.value)}
-              placeholder="Select University Location"
+              placeholder="Select University"
             />
           </div>
           <div className="filter-group">
@@ -75,13 +71,13 @@ const SearchComponent = () => {
               placeholder="Select Lodge Type"
             />
           </div>
-          <div className="filter-group">
+          {/* <div className="filter-group">
             <label>Pricing Range:</label>
             <Slider
               range
               marks={{ 0: "₦0", 10000000: "₦10,000,000" }}
               min={0}
-              max={10000000}
+              max={100000}
               value={pricingRange}
               onChange={(value) => setPricingRange(value)}
             />
@@ -89,25 +85,19 @@ const SearchComponent = () => {
               ₦{pricingRange[0].toLocaleString()} - ₦
               {pricingRange[1].toLocaleString()}
             </div>
-          </div>
-          <div className="filter-group">
-            <label>Property Size (sqft):</label>
-            <Slider
-              range
-              marks={{ 0: "0", 1000: "1,000" }}
-              min={0}
-              max={1000}
-              value={propertySize}
-              onChange={(value) => setPropertySize(value)}
-            />
-            <div className="slider-value">
-              {propertySize[0]} - {propertySize[1]} sqft
-            </div>
-          </div>
+          </div> */}
         </div>
         <div className="search-button">
-          {/* <button onClick={handleSearch}>Search Properties</button> */}
+          <Button
+            onClick={handleSearch}
+            className="border w-full py-3 rounded-xl px-3"
+          >
+            {isLoading ? "Loading" : "Search Properties"}{" "}
+          </Button>
         </div>
+        {error && <div>{error}</div>}
+
+        {searchResults && <div>Search results goes here</div>}
       </div>
     </section>
   );
