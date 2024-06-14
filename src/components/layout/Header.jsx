@@ -3,11 +3,9 @@ import Navbar from "../ui/Navbar";
 
 function Header() {
 	return (
-		<header className=' w-full  h-16 shadow-md p-4 flex items-center'>
-			<div className='w-5/6 mx-auto flex items-center d justify-between'>
-				<Logo />
-				<Navbar />
-			</div>
+		<header className='h-16 w-full px-2 py-8 flex items-center border-b-2 border-solid'>
+			<Logo />
+			<Navbar />
 		</header>
 	);
 }
