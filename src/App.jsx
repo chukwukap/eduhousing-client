@@ -8,6 +8,7 @@ import Login from "./components/pages/auth/login";
 import EmailVerificationPage from "./components/pages/auth/verify-email";
 
 // import "./App.css";
+import "@radix-ui/themes/styles.css";
 
 function App() {
   return (
