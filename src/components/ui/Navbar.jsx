@@ -2,17 +2,17 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 	return (
-		<nav className='flex items-center justify-between w-1/2'>
-			<NavLink to='/' className='text-sm text-black font-semibold'>
+		<nav className='flex items-center justify-between mr-auto w-2/3 gap-4'>
+			<NavLink to='/' className='text-lg text-black font-semibold'>
 				Home
 			</NavLink>
-			<NavLink to='/' className='text-sm text-black font-semibold'>
+			<NavLink to='contact' className='text-lg text-black font-semibold'>
 				Contact
 			</NavLink>
-			<NavLink to='/' className='text-sm text-black font-semibold'>
+			<NavLink to='about' className='text-lg text-black font-semibold'>
 				About
 			</NavLink>
-			<NavLink to='/' className='text-sm text-black font-semibold'>
+			<NavLink to='profile' className='text-lg text-black font-semibold'>
 				Profile
 			</NavLink>
 		</nav>
