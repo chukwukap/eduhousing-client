@@ -26,7 +26,7 @@ function HeroTextCarousel() {
   }
   return (
     <div className="w-full p-4 mt-8">
-      <div className="flex gap-4">
+      {/* <div className="flex gap-4">
         <p
           className="text-xl px-4 pb-2 cursor-pointer font-bold capitalize hover:text-gray-800"
           onClick={(e) => handleSetCurText(e.target.textContent)}
@@ -46,7 +46,7 @@ function HeroTextCarousel() {
           oneroom
         </p>
       </div>
-      <p className="text-xm ml-4">{curText?.text}</p>
+      <p className="text-xm ml-4">{curText?.text}</p> */}
     </div>
   );
 }
