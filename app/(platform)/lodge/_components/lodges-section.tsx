@@ -108,7 +108,7 @@ function LodgesSection() {
     <section className="w-full min-h-screen bg-rose-100">
       <div className="container">
         <div>
-          <h1>Discover the lodge BEST for you!</h1>
+          <h1 className="text-xl">Discover the lodge BEST for you!</h1>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {mockLodges.map((lodge) => (
