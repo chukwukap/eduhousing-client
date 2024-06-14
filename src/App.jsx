@@ -15,11 +15,11 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
+          <Route path="properties" element={<PropertyPage />} />
+          <Route path="auth/register" element={<Register />} />
+          <Route path="auth/login" element={<Login />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route path="properties" element={<PropertyPage />} />
-        <Route path="auth/register" element={<Register />} />
-        <Route path="auth/login" element={<Login />} />
-        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
