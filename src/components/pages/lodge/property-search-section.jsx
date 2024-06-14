@@ -3,7 +3,6 @@ import Select from "react-select";
 // import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import axios from "axios";
-import { Button } from "antd";
 
 const SearchComponent = () => {
   const [university, setUniversity] = useState("");
@@ -88,12 +87,12 @@ const SearchComponent = () => {
           </div> */}
         </div>
         <div className="search-button">
-          <Button
+          <button
             onClick={handleSearch}
             className="border w-full py-3 rounded-xl px-3"
           >
             {isLoading ? "Loading" : "Search Properties"}{" "}
-          </Button>
+          </button>
         </div>
         {error && <div>{error}</div>}
 
