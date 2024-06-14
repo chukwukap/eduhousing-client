@@ -5,6 +5,7 @@ import ErrorPage from "./components/pages/ErrorPage";
 import PropertyPage from "./components/pages/property";
 import Register from "./components/pages/auth/register";
 import Login from "./components/pages/auth/login";
+import EmailVerificationPage from "./components/pages/auth/verify-email";
 
 // import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="properties" element={<PropertyPage />} />
           <Route path="auth/register" element={<Register />} />
           <Route path="auth/login" element={<Login />} />
+          <Route path="auth/verify-email" element={<EmailVerificationPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

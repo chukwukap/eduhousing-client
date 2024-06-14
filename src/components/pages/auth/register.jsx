@@ -2,8 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,7 +17,7 @@ function Register() {
   const universityOptions = [
     { value: "university-of-lagos", label: "University of Lagos" },
     { value: "university-of-ibadan", label: "University of Ibadan" },
-    { value: "university-of-benin", label: "University of Benin" },
+    { value: "university-of-benin", label: "University of Nigeria" },
     // Add more universities as needed
   ];
   const [isLoading, setIsLoading] = useState(false);
@@ -40,9 +43,11 @@ function Register() {
     setError(null);
 
     try {
-      await axios.post("/api/signup", formData);
-      // Handle successful sign-up (e.g., redirect to a different page)
-      console.log("Sign-up successful");
+      await axios.post(
+        "https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1/register",
+        formData
+      );
+      navigate("/auth/verify-email");
     } catch (err) {
       setError("An error occurred during sign-up. Please try again.");
       console.error("Sign-up error:", err);
@@ -55,7 +60,7 @@ function Register() {
     <main className="min-h-screen ">
       <div className="container flex flex-col md:flex-row ">
         {/* Image Section */}
-        <div className="md:w-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
+        <div className=" hidden md:flex md:w-1/2 bg-gradient-to-r from-indigo-500 to-purple-500  items-center justify-center">
           <img
             src="/images/signup-page.jpg"
             alt="Sign Up"
