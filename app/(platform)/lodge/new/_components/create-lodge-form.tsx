@@ -82,24 +82,32 @@ function CreateLodgeForm() {
     },
   });
 
-  const handleSubmit = async (values: LodgeType) => {
+  const onSubmit = async (data) => {
+    console.log(data);
     try {
-      setIsLoading(true);
-      //   await axios.post("/api/lodges", formValues, {
-      //     withCredentials: true,
-      //   });
-      router.push("/lodges");
+      const response = await fetch("/api/user-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error submitting data");
+      }
+
+      const responseData = await response.json();
+      console.log("Form submission successful:", responseData);
+      // Handle successful submission (e.g., redirect, display success message)
     } catch (error) {
-      console.error("Failed to list lodge:", error);
-    } finally {
-      setIsLoading(false);
+      console.error("Form submission error:", error);
+      // Handle errors appropriately (e.g., display error messages to the user)
     }
   };
 
   return (
     <div className="py-8">
       <Form {...form} handleSubmit={form.handleSubmit}>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="title"
@@ -173,34 +181,14 @@ function CreateLodgeForm() {
 
           <FormField
             control={form.control}
-            name="location.lat"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Latitude</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    {...field}
-                    onChange={(e) => field.onChange(parseFloat(e.target.value))}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="location.lng"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Longitude</FormLabel>
+                <FormLabel>
+                  @todo: integrate Google map for choosing location
+                </FormLabel>
                 <FormControl>
-                  <Input
-                    type="number"
-                    {...field}
-                    onChange={(e) => field.onChange(parseFloat(e.target.value))}
-                  />
+                  <div>nothing here</div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -342,7 +330,7 @@ function CreateLodgeForm() {
                       className="block w-full rounded-md border-gray-300 pl-10 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="0.00"
                       min="0"
-                      step="0.01"
+                      step="10"
                     />
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                       <span
