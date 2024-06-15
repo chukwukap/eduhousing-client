@@ -105,10 +105,17 @@ function LodgesSection() {
   ];
 
   return (
-    <section className="w-full min-h-screen bg-rose-100">
+    <section className="w-full min-h-screen bg-stone-100 py-16">
       <div className="container">
         <div>
-          <h1 className="text-xl">Discover the lodge BEST for you!</h1>
+          <h1 className="text-4xl font-bold mb-8">
+            Discover the lodge BEST for you!
+          </h1>
+          <p className="mb-8">
+            Our portfolio of lodges is as diverse as your dreams. Explore the
+            following categories to find the perfect lodge that resonates with
+            your vision of comfort as a student
+          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {mockLodges.map((lodge) => (

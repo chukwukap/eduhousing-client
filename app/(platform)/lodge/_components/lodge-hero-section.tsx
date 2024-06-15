@@ -2,11 +2,9 @@ import * as React from "react";
 
 function PropertiesHeroSection() {
   return (
-    <section className="w-full h-[50vh] bg-rose-100  flex items-center">
+    <section className="w-full h-[50vh] bg-stone-100  flex items-center">
       <div className="container">
-        <h1 className="font-bold text-3xl mb-3">
-          Find Your Dream Accommodation
-        </h1>
+        <h1 className="font-bold text-3xl mb-3">Find Your Dream Lodge</h1>
         <p className="opacity-80">
           Welcome to Estatein, where your dream property awaits in every corner
           of our beautiful world. Explore our curated selection of properties,

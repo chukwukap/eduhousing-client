@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-stone-200 text-stone-700 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
@@ -35,16 +35,28 @@ const Footer: React.FC = () => {
               comfort is our priority.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-stone-700 transition"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-stone-700 transition"
+              >
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-stone-700 transition"
+              >
                 <InstagramIcon className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-stone-700 transition"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -52,31 +64,37 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h2 className="text-white text-lg font-semibold mb-4">
+            <h2 className="text-stone-700 text-lg font-semibold mb-4">
               Quick Links
             </h2>
             <nav className="space-y-2">
-              <Link href="/about" className="block hover:text-white transition">
+              <Link
+                href="/about"
+                className="block hover:text-stone-700 transition"
+              >
                 About Us
               </Link>
               <Link
                 href="/services"
-                className="block hover:text-white transition"
+                className="block hover:text-stone-700 transition"
               >
                 Our Services
               </Link>
-              <Link href="/faq" className="block hover:text-white transition">
+              <Link
+                href="/faq"
+                className="block hover:text-stone-700 transition"
+              >
                 FAQ
               </Link>
               <Link
                 href="/privacy-policy"
-                className="block hover:text-white transition"
+                className="block hover:text-stone-700 transition"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="block hover:text-white transition"
+                className="block hover:text-stone-700 transition"
               >
                 Terms of Service
               </Link>
@@ -85,7 +103,7 @@ const Footer: React.FC = () => {
 
           {/* Contact */}
           <div>
-            <h2 className="text-white text-lg font-semibold mb-4">
+            <h2 className="text-stone-700 text-lg font-semibold mb-4">
               Contact Us
             </h2>
             <div className="space-y-2">
@@ -104,7 +122,7 @@ const Footer: React.FC = () => {
                   href="https://www.uni-housing.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition"
+                  className="hover:text-stone-700 transition"
                 >
                   www.eduHousing.com
                 </a>
@@ -114,7 +132,7 @@ const Footer: React.FC = () => {
 
           {/* Newsletter */}
           <div>
-            <h2 className="text-white text-lg font-semibold mb-4">
+            <h2 className="text-stone-700 text-lg font-semibold mb-4">
               Stay Updated
             </h2>
             <p className="text-sm mb-2">
@@ -124,9 +142,9 @@ const Footer: React.FC = () => {
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-stone-300 border-stone-700 text-stone-800"
               />
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+              <Button className="w-full bg-stone-600 hover:bg-stone-700">
                 Subscribe
               </Button>
             </form>
@@ -141,17 +159,17 @@ const Footer: React.FC = () => {
           <nav className="flex space-x-4 mt-4 md:mt-0">
             <Link
               href="/?utm_source=website&utm_medium=cta&utm_campaign=student_housing"
-              className="hover:text-white transition"
+              className="hover:text-stone-700 transition"
             >
               Home
             </Link>
-            <Link href="/about" className="hover:text-white transition">
+            <Link href="/about" className="hover:text-stone-700 transition">
               About
             </Link>
-            <Link href="/contact" className="hover:text-white transition">
+            <Link href="/contact" className="hover:text-stone-700 transition">
               Contact
             </Link>
-            <Link href="/sitemap" className="hover:text-white transition">
+            <Link href="/sitemap" className="hover:text-stone-700 transition">
               Sitemap
             </Link>
           </nav>
