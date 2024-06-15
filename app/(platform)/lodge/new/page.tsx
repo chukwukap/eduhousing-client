@@ -1,6 +1,6 @@
 import React from "react";
 
-import CreateLodgeForm from "./_components/create-lodge-form";
+import CreateLodgeForm from "./_components/form/create-lodge-form";
 
 const ListLodge = () => {
   return (

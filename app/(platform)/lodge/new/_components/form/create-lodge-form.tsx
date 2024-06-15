@@ -82,7 +82,7 @@ function CreateLodgeForm() {
     },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     console.log(data);
     try {
       const response = await fetch("/api/user-data", {
