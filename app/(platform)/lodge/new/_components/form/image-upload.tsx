@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   FormField,
   FormItem,
@@ -12,7 +12,9 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react"; // Assuming you're using lucide-react for icons
 
 export const ImageUpload = ({ field, form }: { field: any; form: any }) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
+  console.log(previewUrls);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -43,7 +45,7 @@ export const ImageUpload = ({ field, form }: { field: any; form: any }) => {
             type="button"
             variant="outline"
             className="w-full h-32 border-dashed border-2 flex flex-col items-center justify-center text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors"
-            onClick={() => document.getElementById("file-upload")?.click()}
+            onClick={() => inputRef.current?.click()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +64,7 @@ export const ImageUpload = ({ field, form }: { field: any; form: any }) => {
             <span>Click to upload images</span>
           </Button>
           <input
-            id="file-upload"
+            ref={inputRef}
             type="file"
             multiple
             className="hidden"

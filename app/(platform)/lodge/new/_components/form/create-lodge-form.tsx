@@ -166,13 +166,13 @@ function CreateLodgeForm() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="SELF_CONTAIN">Self Contain</SelectItem>
-                    <SelectItem value="APARTMENT">Apartment</SelectItem>
-                    <SelectItem value="HOUSE">House</SelectItem>
+                    <SelectItem value="SINGLE_ROOM">Single room</SelectItem>
+                    <SelectItem value="SELF_CONTAIN">Self contain</SelectItem>
+                    <SelectItem value="FLAT">Flat</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormDescription>
-                  Choose the type of lodge youre listing.
+                  Choose the type of lodge you&apos;re renting.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
