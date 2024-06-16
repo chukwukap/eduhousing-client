@@ -1,15 +1,24 @@
+"use client";
+
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 import Select from "react-select";
-// import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import axios from "axios";
+import { PricingRange } from "./range-field";
+import { Button } from "@/components/ui/button";
 
-const SearchComponent = () => {
+type UniversityLocation = {
+  value: string;
+  label: string;
+};
+
+const PropertySearchSection = () => {
+  const [pricingRange, setPricingRange] = useState<number[]>([0, 10000]);
   const [university, setUniversity] = useState("");
   const [lodgeType, setLodgeType] = useState("");
   //   const [pricingRange, setPricingRange] = useState([0, 100000]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState([]);
 
   const universityLocations = [
@@ -30,13 +39,16 @@ const SearchComponent = () => {
       setIsLoading(true);
       setError(null);
 
-      const response = await axios.post("/api/v1/search", {
-        university,
-        lodgeType,
-        // pricingRange,
+      const response = await fetch("/api/v1/search", {
+        body: JSON.stringify({
+          university,
+          lodgeType,
+          // pricingRange,
+        }),
       });
+      const data = await response.json();
 
-      setSearchResults(response.data);
+      setSearchResults(data);
     } catch (error) {
       setError("An error occurred while searching. Please try again.");
     } finally {
@@ -45,8 +57,8 @@ const SearchComponent = () => {
   };
 
   return (
-    <section className="h-[30vh] border">
-      <div className="container mt-5">
+    <section className="min-h-16 border py-10">
+      <div className="container mt-5 max-w-3xl mx-auto">
         <div className="flex gap-5 justify-between text-sm mb-10">
           <div className="filter-group">
             <label htmlFor="university-location">University</label>
@@ -56,7 +68,7 @@ const SearchComponent = () => {
               value={universityLocations.find(
                 (option) => option.value === university
               )}
-              onChange={(option) => setUniversity(option.value)}
+              onChange={(option) => setUniversity(option?.value || "")}
               placeholder="Select University"
             />
           </div>
@@ -66,33 +78,36 @@ const SearchComponent = () => {
               id="lodge-type"
               options={lodgeTypes}
               value={lodgeTypes.find((option) => option.value === lodgeType)}
-              onChange={(option) => setLodgeType(option.value)}
+              onChange={(option) => setLodgeType(option?.value || "")}
               placeholder="Select Lodge Type"
             />
           </div>
-          {/* <div className="filter-group">
-            <label>Pricing Range:</label>
+          {/* <div>
+            <Label>Pricing Range</Label>
             <Slider
-              range
-              marks={{ 0: "₦0", 10000000: "₦10,000,000" }}
-              min={0}
-              max={100000}
               value={pricingRange}
-              onChange={(value) => setPricingRange(value)}
+              onValueChange={(value) => setPricingRange(value)}
+              max={100000}
+              step={1000}
+              className="mb-2"
             />
-            <div className="slider-value">
-              ₦{pricingRange[0].toLocaleString()} - ₦
-              {pricingRange[1].toLocaleString()}
+            <div className="flex justify-between text-sm text-gray-600">
+              <span>₦{pricingRange[0].toLocaleString()}</span>
+              <span>₦{pricingRange[1].toLocaleString()}</span>
             </div>
           </div> */}
+          <PricingRange
+            pricingRange={pricingRange}
+            setPricingRange={(values) => setPricingRange(() => [...values])}
+          />
         </div>
         <div className="search-button">
-          <button
+          <Button
             onClick={handleSearch}
             className="border w-full py-3 rounded-xl px-3"
           >
             {isLoading ? "Loading" : "Search Properties"}{" "}
-          </button>
+          </Button>
         </div>
         {error && <div>{error}</div>}
 
@@ -102,4 +117,4 @@ const SearchComponent = () => {
   );
 };
 
-export default SearchComponent;
+export default PropertySearchSection;
