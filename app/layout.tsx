@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="w-full ">
+          <div className="w-full relative">
             <Header />
-            {children}
+            {/* {children} */}
             <Footer />
           </div>
         </Providers>

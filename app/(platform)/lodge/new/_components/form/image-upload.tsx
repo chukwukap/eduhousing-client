@@ -66,6 +66,8 @@ export const ImageUpload = ({ field, form }: { field: any; form: any }) => {
           <input
             ref={inputRef}
             type="file"
+            name="
+            "
             multiple
             className="hidden"
             onChange={handleFileChange}
