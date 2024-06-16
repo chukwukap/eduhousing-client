@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface University {
   value: string;
@@ -14,17 +15,20 @@ interface FormData {
   lastName: string;
   phone: string;
   email: string;
+  password: string;
   university: null | University;
 }
 
 function Form() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     phone: "",
     email: "",
+    password: "",
     university: null, // Initialize with null
   });
   const universityOptions = [
@@ -56,11 +60,14 @@ function Form() {
     setError(null);
 
     try {
-      await fetch(
-        "https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1/register",
-        { method: "POST", body: JSON.stringify(formData) }
-      );
-      router.push("/auth/verify-email");
+      const res = await fetch(`${process.env.APP_BASE_URL}/api/v1/register`, {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        // router.push("/auth/verify-email");
+        login(formData.email, formData.password);
+      }
     } catch (err) {
       setError("An error occurred during sign-up. Please try again.");
       console.error("Sign-up error:", err);
@@ -131,6 +138,21 @@ function Form() {
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
             placeholder="Enter your email address"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block mb-2 font-bold">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="Enter password"
             required
           />
         </div>

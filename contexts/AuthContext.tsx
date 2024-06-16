@@ -28,11 +28,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const fetchUser = async (token: string) => {
     try {
-      const response = await fetch("http://your-api-url/api/user", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "http://localhost:3001/api/v1/auth/register",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.ok) {
         const userData = await response.json();
@@ -49,14 +52,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://your-api-url/auth/login", {
+      const response = await fetch("http://localhost:3001/api/v1/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
-
+      console.log(response);
       if (response.ok) {
         const { token } = await response.json();
         localStorage.setItem("token", token);

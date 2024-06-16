@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
               height={50}
             />
             <p className="text-sm">
-              Providing quality student housing solutions since 2010. Your
+              Providing quality student housing solutions since 2024. Your
               comfort is our priority.
             </p>
             <div className="flex space-x-4">

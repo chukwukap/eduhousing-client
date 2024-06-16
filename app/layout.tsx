@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Providers from "@/components/providers";
 import Footer from "@/components/footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <div className="w-full relative">
+            <Toaster />
             <Header />
             {children}
             <Footer />
