@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <Image
               src="/logo.png"
-              alt="UNI.HOUSING Logo"
+              alt="EDU.HOUSING Logo"
               width={150}
               height={50}
             />

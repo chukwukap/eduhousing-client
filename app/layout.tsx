@@ -23,7 +23,7 @@ export default function RootLayout({
         <Providers>
           <div className="w-full relative">
             <Header />
-            {/* {children} */}
+            {children}
             <Footer />
           </div>
         </Providers>

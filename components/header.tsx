@@ -2,8 +2,29 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Bitcoin, Menu, Search, Wallet, X } from "lucide-react";
-// import { HiMenuAlt3, HiX, HiSearch, HiWallet } from 'react-icons/hi';
-// import { FaEthereum } from 'react-icons/fa';
+
+const navItems = [
+  {
+    name: "home",
+    label: "Home",
+    url: "/",
+  },
+  {
+    name: "about",
+    label: "About",
+    url: "/about",
+  },
+  {
+    name: "services",
+    label: "Services",
+    url: "/services",
+  },
+  {
+    name: "lodges",
+    label: "Lodges",
+    url: "/lodge",
+  },
+];
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,9 +39,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky z-10 bg-slate-100/50 backdrop-blur-sm">
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-800 to-purple-900 opacity-75"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent backdrop-blur-md"></div> */}
+    <header className="sticky top-0 left-0 right-0 z-10 bg-stone-100/50 backdrop-blur-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -28,35 +47,22 @@ const Header: React.FC = () => {
               href="/"
               className="text-2xl font-bold text-stone-500 flex items-center"
             >
-              <Bitcoin className="mr-2" /> My dApp
+              <Bitcoin className="mr-2" /> Edu Housing
             </Link>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <Link
-                href="/"
-                className="text-stone-500 hover:text-stone-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-stone-500 hover:text-stone-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
-              >
-                About
-              </Link>
-              <Link
-                href="/services"
-                className="text-stone-500 hover:text-stone-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
-              >
-                Services
-              </Link>
-              <Link
-                href="/contact"
-                className="text-stone-500 hover:text-stone-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
-              >
-                Contact
-              </Link>
+              {navItems.map((nav) => {
+                return (
+                  <Link
+                    key={nav.name}
+                    href={nav.url}
+                    className="text-stone-500 hover:text-stone-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300"
+                  >
+                    {nav.label}
+                  </Link>
+                );
+              })}
             </div>
           </div>
           <div className="flex items-center">
@@ -77,7 +83,7 @@ const Header: React.FC = () => {
             <div className="-mr-2 flex md:hidden">
               <button
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-stone-500 hover:text-stone-400 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="inline-flex items-center justify-center p-2 rounded-md text-stone-500 hover:text-stone-400 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
                 onClick={toggleMenu}
