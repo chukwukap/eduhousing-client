@@ -24,6 +24,8 @@
     "@react-google-maps/api": "^2.19.3",
     "@types/react-select": "^5.0.1",
     "@types/react-slick": "^0.23.13",
+    "@web3-onboard/injected-wallets": "^2.11.1",
+    "@web3-onboard/react": "^2.9.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",

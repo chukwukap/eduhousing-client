@@ -1,7 +1,8 @@
-export default function AboutPage() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      AboutPage page
-    </main>
-  );
+import React from "react";
+import LoginSection from "./_components/login-section";
+
+function LoginPage() {
+  return <LoginSection />;
 }
+
+export default LoginPage;

@@ -5,10 +5,11 @@ import { Bitcoin, Menu, Search, Wallet, X } from "lucide-react";
 
 const navItems = [
   {
-    name: "home",
-    label: "Home",
-    url: "/",
+    name: "lodges",
+    label: "Lodge",
+    url: "/lodge",
   },
+
   {
     name: "about",
     label: "About",
@@ -20,9 +21,9 @@ const navItems = [
     url: "/services",
   },
   {
-    name: "lodges",
-    label: "Lodges",
-    url: "/lodge",
+    name: "login",
+    label: "Login",
+    url: "/login",
   },
 ];
 
@@ -39,7 +40,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-10 bg-stone-100/50 backdrop-blur-sm">
+    <header className="sticky  top-0 left-0 right-0 z-20 bg-stone-100/50 backdrop-blur-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -101,12 +102,18 @@ const Header: React.FC = () => {
       </nav>
       <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
-            href="/"
-            className="text-stone-500 hover:text-stone-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
-          >
-            Home
-          </Link>
+          {navItems.map((item) => {
+            return (
+              <Link
+                key={item.name}
+                href="/"
+                className="text-stone-500 hover:text-stone-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+
           <Link
             href="/about"
             className="text-stone-500 hover:text-stone-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300"
