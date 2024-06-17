@@ -85,11 +85,14 @@ function CreateLodgeForm() {
   const onSubmit = async (data: any) => {
     console.log(data);
     try {
-      const response = await fetch("/api/user-data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1/lodges/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Error submitting data");

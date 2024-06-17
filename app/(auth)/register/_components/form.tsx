@@ -60,10 +60,14 @@ function Form() {
     setError(null);
 
     try {
-      const res = await fetch(`${process.env.APP_BASE_URL}/api/v1/register`, {
-        method: "POST",
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1/auth/register`,
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+        }
+      );
+      console.log(res);
       if (res.ok) {
         // router.push("/auth/verify-email");
         login(formData.email, formData.password);

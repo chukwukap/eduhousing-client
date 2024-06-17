@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const fetchUser = async (token: string) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/api/v1/auth/register",
+        "https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1/users/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -52,14 +52,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:3001/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      console.log(response);
+      const response = await fetch(
+        "https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
       if (response.ok) {
         const { token } = await response.json();
         localStorage.setItem("token", token);

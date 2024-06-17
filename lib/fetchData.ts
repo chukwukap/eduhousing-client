@@ -2,7 +2,9 @@ import authFetch from "./authFetch";
 
 const fetchData = async () => {
   try {
-    const response = await authFetch("http://your-api-url/api/protected-route");
+    const response = await authFetch(
+      "https://obeisant-ear-ordinary-selection-production.pipeops.app/api/v1"
+    );
     if (response.ok) {
       const data = await response.json();
       // Handle the data
